@@ -75,13 +75,11 @@ ROMX $A
 	"Pics 2"
 	"Battle Engine 4"
 ROMX $B
-	"Pics 3"
 	"Battle Engine 5"
 ROMX $C
 	"Pics 4"
 	"Battle Engine 6"
 ROMX $D
-	"Pics 5"
 	"Slot Machines"
 ROMX $E
 	"Battle Engine 7"
@@ -99,7 +97,6 @@ ROMX $12
 	"Screen Effects"
 	"Maps 8"
 ROMX $13
-	"Pics 6"
 	"Maps 9"
 	"Predefs"
 ROMX $14

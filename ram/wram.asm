@@ -2079,8 +2079,14 @@ wDungeonWarpDestinationMap:: db
 wWhichDungeonWarp:: db
 
 wUnusedCardKeyGateID:: db
+wIsAStarter:: db
+wStarterPokemon1:: db
+wStarterPokemon2:: db
+wStarterPokemon3:: db
+wStarterAtkDef:: db
+wStarterSpdSpc:: db
 
-	ds 8
+	ds 2
 
 wStatusFlags1:: db
 	ds 1

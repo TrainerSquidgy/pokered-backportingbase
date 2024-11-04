@@ -800,7 +800,11 @@ OaksLabCharmanderPokeBallText:
 	ld [wRivalStarterTemp], a
 	ld a, OAKSLAB_SQUIRTLE_POKE_BALL
 	ld [wRivalStarterBallSpriteIndex], a
+	ld a, [wStarterPokemon1]
+	and a
+	jr nz, .NotCharmander
 	ld a, STARTER1
+.NotCharmander
 	ld b, OAKSLAB_CHARMANDER_POKE_BALL
 	jr OaksLabSelectedPokeBallScript
 
@@ -810,7 +814,11 @@ OaksLabSquirtlePokeBallText:
 	ld [wRivalStarterTemp], a
 	ld a, OAKSLAB_BULBASAUR_POKE_BALL
 	ld [wRivalStarterBallSpriteIndex], a
+	ld a, [wStarterPokemon2]
+	and a
+	jr nz, .NotSquirtle
 	ld a, STARTER2
+.NotSquirtle
 	ld b, OAKSLAB_SQUIRTLE_POKE_BALL
 	jr OaksLabSelectedPokeBallScript
 
@@ -820,7 +828,11 @@ OaksLabBulbasaurPokeBallText:
 	ld [wRivalStarterTemp], a
 	ld a, OAKSLAB_CHARMANDER_POKE_BALL
 	ld [wRivalStarterBallSpriteIndex], a
+	ld a, [wStarterPokemon3]
+	and a
+	jr nz, .NotBulbasaur
 	ld a, STARTER3
+.NotBulbasaur
 	ld b, OAKSLAB_BULBASAUR_POKE_BALL
 
 OaksLabSelectedPokeBallScript:
@@ -926,6 +938,8 @@ OaksLabMonChoiceMenu:
 	ld [wMonDataLocation], a
 	ld a, 5
 	ld [wCurEnemyLevel], a
+	ld a, 1
+	ld [wIsAStarter], a
 	ld a, [wCurPartySpecies]
 	ld [wPokedexNum], a
 	call AddPartyMon
