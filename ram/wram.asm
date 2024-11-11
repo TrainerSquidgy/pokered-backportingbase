@@ -2085,8 +2085,8 @@ wStarterPokemon2:: db
 wStarterPokemon3:: db
 wStarterAtkDef:: db
 wStarterSpdSpc:: db
-wMountMoonEncounters:: db
-	ds 1
+
+	ds 2
 
 wStatusFlags1:: db
 	ds 1
@@ -2121,8 +2121,8 @@ wCardKeyDoorX:: db
 
 wFirstLockTrashCanIndex:: db
 wSecondLockTrashCanIndex:: db
-
-	ds 2
+wMtMoonEncounter:: db
+	ds 1
 
 wEventFlags:: flag_array NUM_EVENTS
 
