@@ -621,6 +621,7 @@ SlowpokeEvosMoves:
 
 KadabraEvosMoves:
 ; Evolutions
+	db EVOLVE_LEVEL, 38, ALAKAZAM
 	db EVOLVE_TRADE, 1, ALAKAZAM
 	db 0
 ; Learnset
@@ -634,6 +635,7 @@ KadabraEvosMoves:
 
 GravelerEvosMoves:
 ; Evolutions
+	db EVOLVE_LEVEL, 38, GOLEM
 	db EVOLVE_TRADE, 1, GOLEM
 	db 0
 ; Learnset
@@ -659,6 +661,7 @@ ChanseyEvosMoves:
 
 MachokeEvosMoves:
 ; Evolutions
+	db EVOLVE_LEVEL, 40, MACHAMP
 	db EVOLVE_TRADE, 1, MACHAMP
 	db 0
 ; Learnset
@@ -1693,6 +1696,7 @@ MissingNo92EvosMoves:
 
 HaunterEvosMoves:
 ; Evolutions
+	db EVOLVE_LEVEL, 36, GENGAR
 	db EVOLVE_TRADE, 1, GENGAR
 	db 0
 ; Learnset
