@@ -83,7 +83,7 @@ TryDoWildEncounter:
 	and a ; Check against Zero
 	jr nz, .skip_force_encounter ; If it's not zero, skip the forced encounter
 	ld a, [wCurMap] ; Check current map
-	cp ROUTE_1 ; Compare to Mt. Moon
+	cp MT_MOON_1F ; Compare to Mt. Moon
 	jr nz, .skip_force_encounter ; Skip if it's not Mt. Moon
 	ld a, 1
 	ld [wMountMoonEncounters], a ; Make Mt. Moon Encounters not zero
