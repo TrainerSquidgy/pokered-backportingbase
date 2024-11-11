@@ -1,6 +1,6 @@
 SUMMARY:
 	ROM0: 16221 bytes used / 163 free
-	ROMX: 559515 bytes used / 194149 free in 46 banks
+	ROMX: 559530 bytes used / 194134 free in 46 banks
 	SRAM: 25122 bytes used / 7646 free in 4 banks
 	WRAM0: 8162 bytes used / 30 free
 	HRAM: 127 bytes used / 0 free
@@ -3547,7 +3547,7 @@ ROMX bank #4:
 	         $66a8 = PlayerCharacterTitleGraphics
 	         $66a8 = WorldMapTileGraphicsEnd
 	         $68d8 = PlayerCharacterTitleGraphicsEnd
-	SECTION: $68d8-$7a9f ($11c8 bytes) ["Battle Engine 1"]
+	SECTION: $68d8-$7aae ($11d7 bytes) ["Battle Engine 1"]
 	         $68d8 = IsPlayerJustOutsideMap
 	         $68ea = IsPlayerJustOutsideMap.compareCoordWithMapDimension
 	         $68ef = DrawHP
@@ -3725,36 +3725,37 @@ ROMX bank #4:
 	         $78d0 = TryDoWildEncounter.determineEncounterSlot
 	         $78d7 = TryDoWildEncounter.gotEncounterSlot
 	         $78e5 = TryDoWildEncounter.gotWildEncounterType
-	         $7905 = TryDoWildEncounter.lastRepelStep
-	         $7912 = TryDoWildEncounter.CantEncounter2
-	         $7916 = TryDoWildEncounter.willEncounter
-	         $7918 = WildMonEncounterSlotChances
-	         $792c = RecoilEffect_
-	         $793d = RecoilEffect_.recoilEffect
-	         $7953 = RecoilEffect_.gotRecoilDamage
-	         $7958 = RecoilEffect_.updateHP
-	         $7982 = RecoilEffect_.getHPBarCoords
-	         $7990 = RecoilEffect_.updateHPBar
-	         $799e = HitWithRecoilText
-	         $79a3 = ConversionEffect_
-	         $79b8 = ConversionEffect_.conversionEffect
-	         $79cd = ConvertedTypeText
-	         $79d2 = PrintButItFailedText
-	         $79d5 = CallBankF
-	         $79da = HazeEffect_
-	         $7a09 = HazeEffect_.cureStatuses
-	         $7a13 = HazeEffect_.cureVolatileStatuses
-	         $7a37 = CureVolatileStatuses
-	         $7a43 = ResetStatMods
-	         $7a45 = ResetStatMods.loop
-	         $7a4a = ResetStats
-	         $7a4c = ResetStats.loop
-	         $7a53 = StatusChangesEliminatedText
-	         $7a58 = GetTrainerName_
-	         $7a86 = GetTrainerName_.foundName
-	         $7a8f = Random_
-	EMPTY: $7aa0-$7fff ($0560 bytes)
-	TOTAL EMPTY: $0560 bytes
+	         $7902 = TryDoWildEncounter.skip_force_encounter
+	         $7914 = TryDoWildEncounter.lastRepelStep
+	         $7921 = TryDoWildEncounter.CantEncounter2
+	         $7925 = TryDoWildEncounter.willEncounter
+	         $7927 = WildMonEncounterSlotChances
+	         $793b = RecoilEffect_
+	         $794c = RecoilEffect_.recoilEffect
+	         $7962 = RecoilEffect_.gotRecoilDamage
+	         $7967 = RecoilEffect_.updateHP
+	         $7991 = RecoilEffect_.getHPBarCoords
+	         $799f = RecoilEffect_.updateHPBar
+	         $79ad = HitWithRecoilText
+	         $79b2 = ConversionEffect_
+	         $79c7 = ConversionEffect_.conversionEffect
+	         $79dc = ConvertedTypeText
+	         $79e1 = PrintButItFailedText
+	         $79e4 = CallBankF
+	         $79e9 = HazeEffect_
+	         $7a18 = HazeEffect_.cureStatuses
+	         $7a22 = HazeEffect_.cureVolatileStatuses
+	         $7a46 = CureVolatileStatuses
+	         $7a52 = ResetStatMods
+	         $7a54 = ResetStatMods.loop
+	         $7a59 = ResetStats
+	         $7a5b = ResetStats.loop
+	         $7a62 = StatusChangesEliminatedText
+	         $7a67 = GetTrainerName_
+	         $7a95 = GetTrainerName_.foundName
+	         $7a9e = Random_
+	EMPTY: $7aaf-$7fff ($0551 bytes)
+	TOTAL EMPTY: $0551 bytes
 
 ROMX bank #5:
 	SECTION: $4000-$783f ($3840 bytes) ["NPC Sprites 2"]

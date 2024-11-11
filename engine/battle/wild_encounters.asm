@@ -78,6 +78,19 @@ TryDoWildEncounter:
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	ld [wEnemyMonSpecies2], a
+; Force PARAS as first Mt. Moon encounter
+	ld a, [wMountMoonEncounters] ; Check if PARAS has been forced
+	and a ; Check against Zero
+	jr nz, .skip_force_encounter ; If it's not zero, skip the forced encounter
+	ld a, [wCurMap] ; Check current map
+	cp ROUTE_1 ; Compare to Mt. Moon
+	jr nz, .skip_force_encounter ; Skip if it's not Mt. Moon
+	ld a, 1
+	ld [wMountMoonEncounters], a ; Make Mt. Moon Encounters not zero
+	ld a, PARAS
+	ld [wCurPartySpecies], a
+	ld [wEnemyMonSpecies2], a
+.skip_force_encounter
 	ld a, [wRepelRemainingSteps]
 	and a
 	jr z, .willEncounter
