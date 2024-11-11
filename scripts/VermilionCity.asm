@@ -131,6 +131,8 @@ VermilionCity_TextPointers:
 	dw_const VermilionCityHarborSignText,         TEXT_VERMILIONCITY_HARBOR_SIGN
 
 VermilionCityBeautyText:
+	SetEvent EVENT_1ST_LOCK_OPENED
+	SetEvent EVENT_2ND_LOCK_OPENED
 	text_far _VermilionCityBeautyText
 	text_end
 
