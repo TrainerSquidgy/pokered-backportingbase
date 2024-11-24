@@ -161,7 +161,7 @@ EvosMovesPointerTable:
 	dw DragoniteEvosMoves
 	dw MewtwoEvosMoves
 	dw MewEvosMoves
-	dw MissingNo1FEvosMoves
+	dw SuicuneEvosMoves
 	dw MissingNo20EvosMoves
 	dw MissingNo32EvosMoves
 	dw MissingNo34EvosMoves
@@ -2144,4 +2144,15 @@ VictreebelEvosMoves:
 	db 13, WRAP
 	db 15, POISONPOWDER
 	db 18, SLEEP_POWDER
+	db 0
+
+SuicuneEvosMoves:
+	db 0
+	db 11, WATER_GUN
+	db 21, ROAR
+	db 31, GUST
+	db 41, BUBBLEBEAM
+	db 51, MIST
+	db 61, MIRROR_COAT
+	db 71, HYDRO_PUMP
 	db 0

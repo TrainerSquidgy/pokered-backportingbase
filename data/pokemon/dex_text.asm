@@ -1507,3 +1507,13 @@ _VictreebelDexEntry::
 	next "has ever returned"
 	next "from there"
 	dex
+
+
+_SuicuneDexEntry::
+	text "This divine"
+	next "#MON blows"
+	next "around the world,"
+
+	page "always in search"
+	next "of a pure"
+	next "reservoir.@"

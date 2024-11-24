@@ -175,6 +175,7 @@ Moves:
 	move SUPER_FANG,   SUPER_FANG_EFFECT,            1, NORMAL,        90, 10
 	move SLASH,        NO_ADDITIONAL_EFFECT,        70, NORMAL,       100, 20
 	move SUBSTITUTE,   SUBSTITUTE_EFFECT,            0, NORMAL,       100, 10
+	move FAINT_ATTACK, SWIFT_EFFECT,                60, DARK,         100, 20
 	move MIRROR_COAT,  NO_ADDITIONAL_EFFECT,         1, PSYCHIC_TYPE, 100, 20
 	move STRUGGLE,     RECOIL_EFFECT,               50, NORMAL,       100, 10
 	assert_table_length NUM_ATTACKS
