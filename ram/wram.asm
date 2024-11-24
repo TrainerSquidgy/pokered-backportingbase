@@ -72,8 +72,10 @@ wAudioSavedROMBank:: db
 
 wFrequencyModifier:: db
 wTempoModifier:: db
+wBattlePreviousEnemyAttack:: db
+wBattlePreviousPlayerAttack:: db
 
-	ds 13
+	ds 11
 
 
 SECTION "Sprite State Data", WRAM0

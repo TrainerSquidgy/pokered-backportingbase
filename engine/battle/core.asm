@@ -131,6 +131,8 @@ SetScrollXForSlidingPlayerBodyLeft:
 
 StartBattle:
 	xor a
+	ld [wBattlePreviousEnemyAttack], a
+	ld [wBattlePreviousPlayerAttack], a
 	ld [wPartyGainExpFlags], a
 	ld [wPartyFoughtCurrentEnemyFlags], a
 	ld [wActionResultOrTookBattleTurn], a
@@ -319,6 +321,7 @@ MainInBattleLoop:
 ; enemy is using a multi-turn attack like wrap, so player is trapped and cannot execute a move
 	ld a, $ff
 	ld [wPlayerSelectedMove], a
+	ld [wBattlePreviousPlayerAttack], a
 	jr .selectEnemyMove
 .selectPlayerMove
 	ld a, [wActionResultOrTookBattleTurn]
@@ -5583,6 +5586,7 @@ RandomizeDamage:
 ; for more detailed commentary, see equivalent function for player side (ExecutePlayerMove)
 ExecuteEnemyMove:
 	ld a, [wEnemySelectedMove]
+	ld [wBattlePreviousEnemyAttack], a
 	inc a
 	jp z, ExecuteEnemyMoveDone
 	call PrintGhostText
