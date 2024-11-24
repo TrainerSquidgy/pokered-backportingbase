@@ -24,5 +24,6 @@ DEF SPECIAL EQU const_value
 	const PSYCHIC_TYPE ; $18
 	const ICE          ; $19
 	const DRAGON       ; $1A
+	const DARK
 
 DEF NUM_TYPES EQU const_value
