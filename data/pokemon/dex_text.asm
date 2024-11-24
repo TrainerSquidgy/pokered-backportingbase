@@ -1507,3 +1507,24 @@ _VictreebelDexEntry::
 	next "has ever returned"
 	next "from there"
 	dex
+
+_SentretDexEntry::
+	text "When acting as a"
+	next "lookout, it warns"
+	next "others of danger"
+
+	page "by screeching and"
+	next "hitting the ground"
+	next "with its tail.@"
+	dex
+	
+	
+_FurretDexEntry::
+	text "It lives in narrow"
+	next "burrows that fit"
+	next "its slim body. The"
+
+	page "deeper the nests"
+	next "go, the more maze-"
+	next "like they become.@"
+	dex

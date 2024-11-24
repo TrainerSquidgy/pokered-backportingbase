@@ -161,8 +161,8 @@ EvosMovesPointerTable:
 	dw DragoniteEvosMoves
 	dw MewtwoEvosMoves
 	dw MewEvosMoves
-	dw MissingNo1FEvosMoves
-	dw MissingNo20EvosMoves
+	dw SentretEvosMoves
+	dw FurretEvosMoves
 	dw MissingNo32EvosMoves
 	dw MissingNo34EvosMoves
 	dw MissingNo38EvosMoves
@@ -2144,4 +2144,23 @@ VictreebelEvosMoves:
 	db 13, WRAP
 	db 15, POISONPOWDER
 	db 18, SLEEP_POWDER
+	db 0
+
+SentretEvosMoves:
+	db EVOLVE_LEVEL, 15, FURRET
+	db 0
+	db 11, QUICK_ATTACK
+	db 17, FURY_SWIPES
+	db 25, SLAM
+	db 33, REST
+	db 41, AMNESIA
+	db 0
+	
+FurretEvosMoves:
+	db 0
+	db 11, QUICK_ATTACK
+	db 18, FURY_SWIPES
+	db 28, SLAM
+	db 38, REST
+	db 48, AMNESIA
 	db 0
