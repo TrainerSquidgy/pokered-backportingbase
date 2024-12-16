@@ -2148,10 +2148,10 @@ VictreebelEvosMoves:
 
 SuicuneEvosMoves:
 	db 0
-	db 11, WATER_GUN
-	db 21, ROAR
+	db 11, BUBBLEBEAM
+	db 21, RAIN_DANCE
 	db 31, GUST
-	db 41, BUBBLEBEAM
+	db 41, AURORA_BEAM
 	db 51, MIST
 	db 61, MIRROR_COAT
 	db 71, HYDRO_PUMP

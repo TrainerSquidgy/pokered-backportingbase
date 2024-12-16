@@ -166,6 +166,8 @@ AttackAnimationPointers:
 	dw SubstituteAnim
 	dw SwiftAnim
 	dw CounterAnim
+	dw UnusedAnim
+	dw UnusedAnim
 	dw StruggleAnim
 	assert_table_length NUM_ATTACKS
 	dw ShowPicAnim

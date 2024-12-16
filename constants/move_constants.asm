@@ -172,6 +172,8 @@
 	const SUBSTITUTE   ; a4
 	const FAINT_ATTACK
 	const MIRROR_COAT
+	const SUNNY_DAY
+	const RAIN_DANCE
 	const STRUGGLE     ; a5
 DEF NUM_ATTACKS EQU const_value - 1
 
