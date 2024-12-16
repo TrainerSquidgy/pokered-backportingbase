@@ -67,6 +67,15 @@ SleepEffect:
 .didntAffect
 	jp PrintDidntAffectText
 
+
+DownpourText:
+	text_far _DownpourText
+	text_end
+	
+SunGotBrightText:
+	text_far _SunGotBrightText
+	text_end
+	
 FellAsleepText:
 	text_far _FellAsleepText
 	text_end
@@ -1494,4 +1503,22 @@ PlayBattleAnimationGotID:
 	pop bc
 	pop de
 	pop hl
+	ret
+
+SunnyDayEffect:
+	ld a, 5
+	ld [wWeatherTurnsRemaining], a
+	ld a, 1
+	ld [wWeatherType], a
+	ld hl, SunGotBrightText
+	jp PrintText
+	ret
+	
+RainDanceEffect:
+	ld a, 5
+	ld [wWeatherTurnsRemaining], a
+	ld a, 2
+	ld [wWeatherType], a
+	ld hl, DownpourText
+	jp PrintText
 	ret

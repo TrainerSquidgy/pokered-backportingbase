@@ -2085,8 +2085,9 @@ wStarterPokemon2:: db
 wStarterPokemon3:: db
 wStarterAtkDef:: db
 wStarterSpdSpc:: db
-
-	ds 2
+wWeatherType:: db
+wWeatherTurnsRemaining:: db
+	
 
 wStatusFlags1:: db
 	ds 1

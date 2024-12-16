@@ -131,6 +131,8 @@ SetScrollXForSlidingPlayerBodyLeft:
 
 StartBattle:
 	xor a
+	ld [wWeatherType], a
+	ld [wWeatherTurnsRemaining], a
 	ld [wPartyGainExpFlags], a
 	ld [wPartyFoughtCurrentEnemyFlags], a
 	ld [wActionResultOrTookBattleTurn], a
@@ -437,6 +439,7 @@ MainInBattleLoop:
 	jp z, HandlePlayerMonFainted
 	call DrawHUDsAndHPBars
 	call CheckNumAttacksLeft
+	call HandleWeatherBetweenTurns
 	jp MainInBattleLoop
 .playerMovesFirst
 	call ExecutePlayerMove
@@ -3095,6 +3098,13 @@ ExecutePlayerMove:
 	jp z, ExecutePlayerMoveDone
 
 CheckIfPlayerNeedsToChargeUp:
+	ld a, [wPlayerSelectedMove]
+	cp SOLARBEAM
+	jr nz, .NotSolarBeam
+	ld a, [wWeatherType]
+	dec a
+	jr z, PlayerCanExecuteMove
+.NotSolarBeam
 	ld a, [wPlayerMoveEffect]
 	cp CHARGE_EFFECT
 	jp z, JumpMoveEffect
@@ -4158,6 +4168,7 @@ GetDamageVarsForPlayerAttack:
 	ld hl, wDamage ; damage to eventually inflict, initialise to zero
 	ldi [hl], a
 	ld [hl], a
+	call HandleWeatherEffectsOnPlayerTypes
 	ld hl, wPlayerMovePower
 	ld a, [hli]
 	and a
@@ -4271,6 +4282,7 @@ GetDamageVarsForEnemyAttack:
 	xor a
 	ld [hli], a
 	ld [hl], a
+	call HandleWeatherEffectsOnEnemyTypes
 	ld hl, wEnemyMovePower
 	ld a, [hli]
 	ld d, a ; d = move power
@@ -5437,6 +5449,8 @@ MoveHitTest:
 	bit USING_X_ACCURACY, a ; is the enemy using X Accuracy?
 	ret nz ; if so, always hit regardless of accuracy/evasion
 .calcHitChance
+	call HandleWeatherEffectsOnAccuracy
+	ret c
 	call CalcHitChance ; scale the move accuracy according to attacker's accuracy and target's evasion
 	ld a, [wPlayerMoveAccuracy]
 	ld b, a
@@ -5614,6 +5628,13 @@ ExecuteEnemyMove:
 	call GetCurrentMove
 
 CheckIfEnemyNeedsToChargeUp:
+	ld a, [wEnemySelectedMove]
+	cp SOLARBEAM
+	jr nz, .NotSolarBeam
+	ld a, [wWeatherType]
+	dec a
+	jr z, EnemyCanExecuteMove
+.NotSolarBeam
 	ld a, [wEnemyMoveEffect]
 	cp CHARGE_EFFECT
 	jp z, JumpMoveEffect
@@ -7046,3 +7067,205 @@ LoadMonBackPic:
 	ldh a, [hLoadedROMBank]
 	ld b, a
 	jp CopyVideoData
+
+HandleWeatherEffectsOnPlayerTypes:
+	ld a, [wWeatherTurnsRemaining]
+	and a
+	ret z
+	ld a, [wWeatherType]
+	and a
+	ret z
+	dec a
+	jr z, .Sun
+	dec a
+	jr z, .Rain
+	
+	
+.Sun
+	ld a, [wPlayerMoveType]
+	cp FIRE
+	jr z, .SunFire
+	cp WATER
+	jr z, .SunWater
+	ret
+
+.SunFire
+	ld a, [wPlayerMovePower]
+	add a
+	ld [wPlayerMovePower], a	
+	ret
+.SunWater
+	ld a, [wPlayerMovePower]
+	srl a
+	ld [wPlayerMovePower], a	
+	ret
+	
+.Rain
+	ld a, [wPlayerUsedMove]
+	cp SOLARBEAM
+	jr z, .RainFire
+	ld a, [wPlayerMoveType]
+	cp FIRE
+	jr z, .RainFire
+	cp WATER
+	jr z, .RainWater
+	ret
+
+.RainFire
+	ld a, [wPlayerMovePower]
+	srl a
+	ld [wPlayerMovePower], a	
+	ret
+.RainWater
+	ld a, [wPlayerMovePower]
+	add a
+	ld [wPlayerMovePower], a	
+	ret
+	
+HandleWeatherEffectsOnEnemyTypes:
+	ld a, [wWeatherTurnsRemaining]
+	and a
+	ret z
+	ld a, [wWeatherType]
+	and a
+	ret z
+	dec a
+	jr z, .Sun
+	dec a
+	jr z, .Rain
+	
+	
+.Sun
+	ld a, [wEnemyMoveType]
+	cp FIRE
+	jr z, .SunFire
+	cp WATER
+	jr z, .SunWater
+	ret
+
+.SunFire
+	ld a, [wEnemyMovePower]
+	add a
+	ld [wEnemyMovePower], a	
+	ld [hl], a
+	ret
+.SunWater
+	ld a, [wEnemyMovePower]
+	srl a
+	ld [wEnemyMovePower], a	
+	ret
+	
+.Rain
+	ld a, [wEnemyUsedMove]
+	cp SOLARBEAM
+	jr z, .RainFire
+	ld a, [wEnemyMoveType]
+	cp FIRE
+	jr z, .RainFire
+	cp WATER
+	jr z, .RainWater
+	ret
+
+.RainFire
+	ld a, [wEnemyMovePower]
+	srl a
+	ld [wEnemyMovePower], a	
+	ret
+.RainWater
+	ld a, [wEnemyMovePower]
+	add a
+	ld [wEnemyMovePower], a	
+	ret
+
+	
+HandleWeatherBetweenTurns:
+	ld a, [wWeatherTurnsRemaining]
+	and a
+	ret z
+	ld a, [wWeatherType]
+	dec a
+	jr z, .Sun
+	dec a
+	jr z, .Rain
+	ret
+	
+.Sun
+	ld a, [wWeatherTurnsRemaining]
+	dec a
+	ld [wWeatherTurnsRemaining], a
+	and a
+	jr z, .SunStopped
+	ld hl, TheSunlightIsStrong
+	jp PrintText
+	ret
+.SunStopped
+	ld [wWeatherType], a
+	ld hl, TheSunlightFaded
+	jp PrintText
+	ret
+.Rain
+	ld a, [wWeatherTurnsRemaining]
+	dec a
+	ld [wWeatherTurnsRemaining], a
+	and a
+	jr z, .RainStopped
+	ld hl, RainContinuesToFall
+	jp PrintText
+	ret
+.RainStopped
+	ld [wWeatherType], a
+	ld hl, TheRainStopped
+	jp PrintText
+	ret
+
+RainContinuesToFall:
+	text_far _RainContinuesToFall
+	text_end
+
+
+TheSunlightIsStrong:
+	text_far _TheSunlightIsStrong
+	text_end
+
+TheRainStopped:
+	text_far _TheRainStopped
+	text_end
+
+
+TheSunlightFaded:
+	text_far _TheSunlightFaded
+	text_end
+
+HandleWeatherEffectsOnAccuracy:
+	ld a, [wWeatherTurnsRemaining]
+	and a
+	ret z
+	ld a, [wPlayerSelectedMove]
+	ld b, a
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .doAccuracyCheck
+	ld a, [wEnemySelectedMove]
+	ld b, a
+.doAccuracyCheck
+	ld a, b
+	cp THUNDER
+	ret nz
+	ld a, [wWeatherType]
+	dec a
+	jr z, .Sun
+	dec a
+	ret nz
+	scf
+	ret	
+.Sun
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .PlayerAccuracy
+	ld a, 128
+	ld [wEnemyMoveAccuracy], a
+	ret
+.PlayerAccuracy
+	ld a, 128
+	ld [wPlayerMoveAccuracy], a
+	ret

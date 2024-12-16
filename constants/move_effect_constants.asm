@@ -91,4 +91,6 @@
 	const LEECH_SEED_EFFECT          ; $54
 	const SPLASH_EFFECT              ; $55
 	const DISABLE_EFFECT             ; $56
+	const SUN_EFFECT
+	const RAIN_EFFECT
 DEF NUM_MOVE_EFFECTS EQU const_value - 1
