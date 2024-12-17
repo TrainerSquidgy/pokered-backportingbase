@@ -1283,8 +1283,8 @@ wPlayerToxicCounter:: db
 ; high nibble: which move is disabled (1-4)
 ; low nibble: disable turns left
 wPlayerDisabledMove:: db
+wPlayerRolloutCount:: db
 
-	ds 1
 
 ; when the enemy is attacking multiple times, the number of attacks left
 wEnemyNumAttacksLeft:: db
@@ -1296,8 +1296,7 @@ wEnemyToxicCounter:: db
 ; high nibble: which move is disabled (1-4)
 ; low nibble: disable turns left
 wEnemyDisabledMove:: db
-
-	ds 1
+wEnemyRolloutCount:: db
 
 UNION
 ; the amount of damage accumulated by the player while biding

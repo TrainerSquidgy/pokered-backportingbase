@@ -67,15 +67,6 @@ SleepEffect:
 .didntAffect
 	jp PrintDidntAffectText
 
-
-DownpourText:
-	text_far _DownpourText
-	text_end
-	
-SunGotBrightText:
-	text_far _SunGotBrightText
-	text_end
-	
 FellAsleepText:
 	text_far _FellAsleepText
 	text_end
@@ -478,6 +469,16 @@ UpdateStatDone:
 	ld a, [de]
 	cp MINIMIZE
 	jr nz, .notMinimize
+	cp DEFENSE_CURL
+	jr nz, .notDefenseCurl
+	ld hl, wPlayerBattleStatus3
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .PlayerCurl
+	ld hl, wEnemyBattleStatus3
+.PlayerCurl
+	set CURLED, [hl]
+.notDefenseCurl
  ; if a substitute is up, slide off the substitute and show the mon pic before
  ; playing the minimize animation
 	bit HAS_SUBSTITUTE_UP, [hl]
@@ -1522,3 +1523,14 @@ RainDanceEffect:
 	ld hl, DownpourText
 	jp PrintText
 	ret
+	
+DownpourText:
+	text_far _DownpourText
+	text_end
+	
+SunGotBrightText:
+	text_far _SunGotBrightText
+	text_end
+	
+RolloutEffect:
+	

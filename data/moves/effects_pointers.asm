@@ -89,4 +89,5 @@ MoveEffectPointerTable:
 	dw DisableEffect             ; DISABLE_EFFECT
 	dw SunnyDayEffect
 	dw RainDanceEffect
+	dw RolloutEffect
 	assert_table_length NUM_MOVE_EFFECTS

@@ -164,6 +164,9 @@ AttackAnimationPointers:
 	dw SuperFangAnim
 	dw SlashAnim
 	dw SubstituteAnim
+	dw SwiftAnim
+	dw CounterAnim
+	dw UnusedAnim
 	dw UnusedAnim
 	dw UnusedAnim
 	dw StruggleAnim

@@ -295,6 +295,9 @@ MainInBattleLoop:
 	ld a, [wPlayerBattleStatus2]
 	and (1 << NEEDS_TO_RECHARGE) | (1 << USING_RAGE) ; check if the player is using Rage or needs to recharge
 	jr nz, .selectEnemyMove
+	ld a, [wPlayerBattleStatus3]
+	bit IN_ROLLOUT, a
+	jr nz, .selectEnemyMove
 ; the player is not using Rage and doesn't need to recharge
 	ld hl, wEnemyBattleStatus1
 	res FLINCHED, [hl] ; reset flinch bit
@@ -390,8 +393,20 @@ MainInBattleLoop:
 .playerDidNotUseCounter
 	ld a, [wEnemySelectedMove]
 	cp COUNTER
-	jr z, .playerMovesFirst ; if enemy used Counter and player didn't
+	jp z, .playerMovesFirst ; if enemy used Counter and player didn't
+	ld a, [wPlayerSelectedMove]
+	cp MIRROR_COAT
+	jr nz, .playerDidNotUseMirrorCoat
+	ld a, [wEnemySelectedMove]
+	cp MIRROR_COAT
+	jr z, .compareSpeed ; if both used Mirror Coat
+	jr .enemyMovesFirst ; if player used Mirror Coat and enemy didn't
+.playerDidNotUseMirrorCoat
+	ld a, [wEnemySelectedMove]
+	cp MIRROR_COAT
+	jr z, .playerMovesFirst ; if enemy used Mirror Coat and player didn't
 .compareSpeed
+
 	ld de, wBattleMonSpeed ; player speed value
 	ld hl, wEnemyMonSpeed ; enemy speed value
 	ld c, $2
@@ -764,6 +779,7 @@ FaintEnemyPokemon:
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
+	ld [wEnemyRolloutCount], a
 	ld [wEnemyDisabledMove], a
 	ld [wEnemyDisabledMoveNumber], a
 	ld [wEnemyMonMinimized], a
@@ -1749,6 +1765,7 @@ SendOutMon:
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
+	ld [wPlayerRolloutCount], a
 	ld [wPlayerDisabledMove], a
 	ld [wPlayerDisabledMoveNumber], a
 	ld [wPlayerMonMinimized], a
@@ -2938,6 +2955,9 @@ SelectEnemyMove:
 	ld a, [wEnemyBattleStatus2]
 	and (1 << NEEDS_TO_RECHARGE) | (1 << USING_RAGE) ; need to recharge or using rage
 	ret nz
+	ld a, [wEnemyBattleStatus3]
+	bit IN_ROLLOUT, a
+	ret nz
 	ld hl, wEnemyBattleStatus1
 	ld a, [hl]
 	and (1 << CHARGING_UP) | (1 << THRASHING_ABOUT) ; using a charging move or thrash/petal dance
@@ -3150,6 +3170,7 @@ PlayerCalcMoveDamage:
 	jp z, playerCheckIfFlyOrChargeEffect ; for moves with 0 BP, skip any further damage calculation and, for now, skip MoveHitTest
 	               ; for these moves, accuracy tests will only occur if they are called as part of the effect itself
 	call AdjustDamageForMoveType
+	call CalculatePlayerRolloutDamage
 	call RandomizeDamage
 .moveHitTest
 	call MoveHitTest
@@ -3278,6 +3299,12 @@ MultiHitText:
 	text_end
 
 ExecutePlayerMoveDone:
+	ld a, [wPlayerSelectedMove]
+	cp ROLLOUT
+	jr z, .IsRollout
+	xor a
+	ld [wPlayerRolloutCount], a
+.IsRollout
 	xor a
 	ld [wActionResultOrTookBattleTurn], a
 	ld b, 1
@@ -3572,7 +3599,7 @@ CheckPlayerStatusConditions:
 .RageCheck
 	ld a, [wPlayerBattleStatus2]
 	bit USING_RAGE, a ; is mon using rage?
-	jp z, .checkPlayerStatusConditionsDone ; if we made it this far, mon can move normally this turn
+	jp z, .RolloutCheck ; if we made it this far, mon can move normally this turn
 	ld a, RAGE
 	ld [wNamedObjectIndex], a
 	call GetMoveName
@@ -3581,7 +3608,16 @@ CheckPlayerStatusConditions:
 	ld [wPlayerMoveEffect], a
 	ld hl, PlayerCanExecuteMove
 	jp .returnToHL
-
+.RolloutCheck
+	ld a, [wPlayerBattleStatus3]
+	bit IN_ROLLOUT, a ; is mon using rollout?
+	jp z, .checkPlayerStatusConditionsDone ; if we made it this far, mon can move normally this turn
+	ld a, ROLLOUT
+	ld [wPlayerMoveNum], a
+	ld [wNamedObjectIndex], a
+	ld hl, RolloutText
+	call PrintText
+	ld hl, PlayerCalcMoveDamage ; skip DecrementPP
 .returnToHL
 	xor a
 	ret
@@ -3637,6 +3673,9 @@ SavingEnergyText:
 
 UnleashedEnergyText:
 	text_far _UnleashedEnergyText
+	text_end
+RolloutText:
+	text_far _RolloutText
 	text_end
 
 ThrashingAboutText:
@@ -4702,7 +4741,7 @@ HandleCounterMove:
 	ld a, [wEnemySelectedMove]
 .next
 	cp COUNTER
-	ret nz ; return if not using Counter
+	jr nz, .MirrorCoat ; return if not using Counter
 	ld a, $01
 	ld [wMoveMissed], a ; initialize the move missed variable to true (it is set to false below if the move hits)
 	ld a, [hl]
@@ -4721,6 +4760,26 @@ HandleCounterMove:
 ; if the move wasn't Normal or Fighting type, miss
 	xor a
 	ret
+
+.MirrorCoat
+	cp MIRROR_COAT
+	ret nz
+	ld [wMoveMissed], a ; initialize the move missed variable to true (it is set to false below if the move hits)
+	ld a, [hl]
+	cp COUNTER
+	ret z ; miss if the opponent's last selected move is Counter.
+	ld a, [de]
+	and a
+	ret z ; miss if the opponent's last selected move's Base Power is 0.
+	inc de
+	ld a, [de]
+	ld hl, MirrorCoatTypes
+	call IsInByteArray
+	jr c, .counterableType
+; if the move wasn't in the list type, miss
+	xor a
+	ret
+	
 .counterableType
 	ld hl, wDamage
 	ld a, [hli]
@@ -5684,6 +5743,7 @@ EnemyCalcMoveDamage:
 	call CalculateDamage
 	jp z, EnemyCheckIfFlyOrChargeEffect
 	call AdjustDamageForMoveType
+	call CalculateEnemyRolloutDamage
 	call RandomizeDamage
 
 EnemyMoveHitTest:
@@ -5816,6 +5876,12 @@ HitXTimesText:
 	text_end
 
 ExecuteEnemyMoveDone:
+	ld a, [wEnemySelectedMove]
+	cp ROLLOUT
+	jr z, .IsRollout
+	xor a
+	ld [wEnemyRolloutCount], a
+.IsRollout	
 	ld b, $1
 	ret
 
@@ -6052,7 +6118,7 @@ CheckEnemyStatusConditions:
 	jp .enemyReturnToHL
 .checkIfThrashingAbout
 	bit THRASHING_ABOUT, [hl] ; is mon using thrash or petal dance?
-	jr z, .checkIfUsingMultiturnMove
+	jr z, .RolloutCheck
 	ld a, THRASH
 	ld [wEnemyMoveNum], a
 	ld hl, ThrashingAboutText
@@ -6071,6 +6137,17 @@ CheckEnemyStatusConditions:
 	inc a ; confused for 2-5 turns
 	ld [wEnemyConfusedCounter], a
 	pop hl ; skip DecrementPP
+	jp .enemyReturnToHL
+.RolloutCheck
+	ld a, [wEnemyBattleStatus3]
+	bit IN_ROLLOUT, a ; is mon using rollout?
+	jp z, .checkIfUsingMultiturnMove ; if we made it this far, mon can move normally this turn
+	ld a, ROLLOUT
+	ld [wEnemyMoveNum], a
+	ld [wNamedObjectIndex], a
+	ld hl, RolloutText
+	call PrintText
+	ld hl, EnemyCalcMoveDamage ; skip DecrementPP
 	jp .enemyReturnToHL
 .checkIfUsingMultiturnMove
 	bit USING_TRAPPING_MOVE, [hl] ; is mon using multi-turn move?
@@ -7068,6 +7145,40 @@ LoadMonBackPic:
 	ld b, a
 	jp CopyVideoData
 
+
+IsInByteArray:
+	ld de, 1
+	ld b, 0
+	ld c, a
+.loop
+	ld a, [hl]
+	cp -1
+	jr z, .NotInArray
+	cp c
+	jr z, .InArray
+	inc b
+	add hl, de
+	jr .loop
+
+.NotInArray:
+	and a
+	ret
+
+.InArray:
+	scf
+	ret
+
+MirrorCoatTypes:
+	db FIRE
+	db WATER
+	db GRASS
+	db ELECTRIC
+	db PSYCHIC_TYPE
+	db ICE
+	db DRAGON
+	db -1
+	
+	
 HandleWeatherEffectsOnPlayerTypes:
 	ld a, [wWeatherTurnsRemaining]
 	and a
@@ -7268,4 +7379,76 @@ HandleWeatherEffectsOnAccuracy:
 .PlayerAccuracy
 	ld a, 128
 	ld [wPlayerMoveAccuracy], a
+	ret
+	
+CalculatePlayerRolloutDamage:
+	ld a, [wPlayerRolloutCount]
+	inc a
+	ld b, a
+	cp 5
+	jr z, .RolloutMaxedOut
+	ld [wPlayerRolloutCount], a	
+	jr .DoneRolloutCounter
+.RolloutMaxedOut	
+	xor a
+	ld [wPlayerRolloutCount], a
+	ld hl, wPlayerBattleStatus3
+	res IN_ROLLOUT, [hl]
+.DoneRolloutCounter	
+	ld a, [wPlayerBattleStatus3]
+	bit CURLED, a
+	jr z, .not_curled
+	inc b
+.not_curled
+.loop
+	dec b
+	jr z, .done_damage
+
+	ld hl, wDamage + 1
+	sla [hl]
+	dec hl
+	rl [hl]
+	jr nc, .loop
+
+	ld a, $ff
+	ld [hli], a
+	ld [hl], a
+
+.done_damage
+	ret
+	
+CalculateEnemyRolloutDamage:
+	ld a, [wEnemyRolloutCount]
+	inc a
+	ld b, a
+	cp 5
+	jr z, .RolloutMaxedOut
+	ld [wEnemyRolloutCount], a	
+	jr .DoneRolloutCounter
+.RolloutMaxedOut	
+	xor a
+	ld [wEnemyRolloutCount], a
+	ld hl, wEnemyBattleStatus3
+	res IN_ROLLOUT, [hl]
+.DoneRolloutCounter	
+	ld a, [wEnemyBattleStatus3]
+	bit CURLED, a
+	jr z, .not_curled
+	inc b
+.not_curled
+.loop
+	dec b
+	jr z, .done_damage
+
+	ld hl, wDamage + 1
+	sla [hl]
+	dec hl
+	rl [hl]
+	jr nc, .loop
+
+	ld a, $ff
+	ld [hli], a
+	ld [hl], a
+
+.done_damage
 	ret
