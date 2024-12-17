@@ -1,42 +1,36 @@
+# compiled objects
 *.o
+*.h
+*.c
+
+# compiled graphics
+*.1bpp
+*.2bpp
+*.pic
+
+# compiled audio
+*.pcm
+
+# compiled roms
 *.gbc
-*.o
-*.o
-*.gbc
+*.gb
+*.patch
+
+# rgbds extras
+*.map
 *.sym
-audio_blue.o
-audio_blue_debug.o
-audio_red.o
-gfx/pics_blue.o
-gfx/pics_blue_debug.o
-gfx/pics_red.o
-gfx/sprites_blue.o
-gfx/sprites_blue_debug.o
-gfx/sprites_red.o
-gfx/tilesets_blue.o
-gfx/tilesets_blue_debug.o
-gfx/tilesets_red.o
-home_blue.o
-home_blue_debug.o
-home_red.o
-main_blue.o
-main_blue_debug.o
-main_red.o
-maps_blue.o
-maps_blue_debug.o
-maps_red.o
-pokeblue.gbc
-pokeblue.map
-pokeblue.sym
-pokeblue_debug.gbc
-pokeblue_debug.map
-pokeblue_debug.sym
-pokered.gbc
-pokered.map
-pokered.sym
-ram_blue.o
-ram_blue_debug.o
-ram_red.o
-text_blue.o
-text_blue_debug.o
-text_red.o
+
+# tool binaries
+*.exe
+
+# precompiled python
+*.pyc
+*$py.class
+
+# save game files
+*.sgm
+*.sav
+*.rtc
+*.sn*
+*.sa*
+*.sg1
