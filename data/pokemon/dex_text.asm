@@ -1507,3 +1507,23 @@ _VictreebelDexEntry::
 	next "has ever returned"
 	next "from there"
 	dex
+
+_SlugmaDexEntry::
+	text "These group to-"
+	next "gether in areas"
+	next "that are hotter"
+
+	page "than normal. If it"
+	next "cools off, its"
+	next "skin hardens.@"
+	dex
+	
+_MagcargoDexEntry::
+	text "Its body is as hot"
+	next "as lava and is"
+	next "always billowing."
+
+	page "Flames will"
+	next "occasionally burst"
+	next "from its shell.@"
+	dex
