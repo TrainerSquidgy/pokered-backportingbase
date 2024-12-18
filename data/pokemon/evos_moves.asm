@@ -161,7 +161,7 @@ EvosMovesPointerTable:
 	dw DragoniteEvosMoves
 	dw MewtwoEvosMoves
 	dw MewEvosMoves
-	dw MissingNo1FEvosMoves
+	dw DelibirdEvosMoves
 	dw MissingNo20EvosMoves
 	dw MissingNo32EvosMoves
 	dw MissingNo34EvosMoves
@@ -2144,4 +2144,8 @@ VictreebelEvosMoves:
 	db 13, WRAP
 	db 15, POISONPOWDER
 	db 18, SLEEP_POWDER
+	db 0
+
+DelibirdEvosMoves:
+	db 0
 	db 0

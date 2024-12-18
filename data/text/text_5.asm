@@ -137,3 +137,13 @@ _RolloutText::
 	text "<USER>"
 	line "used ROLLOUT!"
 	prompt
+	
+_TargetRefusedGiftText::
+	text "<TARGET>"
+	line "refused the gift!"
+	prompt
+	
+_TargetRegainedHealthText::
+	text "<TARGET>"
+	line "regained health!"
+	prompt

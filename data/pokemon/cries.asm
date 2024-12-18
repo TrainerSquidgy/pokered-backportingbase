@@ -157,7 +157,7 @@ CryData::
 	mon_cry SFX_CRY_0F, $3C, $C0 ; Dragonite
 	mon_cry SFX_CRY_1E, $99, $FF ; Mewtwo
 	mon_cry SFX_CRY_1E, $EE, $FF ; Mew
-	mon_cry SFX_CRY_00, $00, $00 ; MissingNo.
+	mon_cry SFX_CRY_12, $EE, $40 ; Delibird
 	mon_cry SFX_CRY_00, $00, $00 ; MissingNo.
 	mon_cry SFX_CRY_00, $00, $00 ; MissingNo.
 	mon_cry SFX_CRY_00, $00, $00 ; MissingNo.

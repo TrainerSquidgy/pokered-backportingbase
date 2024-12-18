@@ -158,7 +158,7 @@
 	const DRAGONITE  ; 95
 	const MEWTWO     ; 96
 	const MEW        ; 97
-	const_skip               ; $1F
+	const DELIBIRD
 	const_skip               ; $20
 	const_skip               ; $32
 	const_skip               ; $34

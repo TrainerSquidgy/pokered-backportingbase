@@ -4207,6 +4207,7 @@ GetDamageVarsForPlayerAttack:
 	ld hl, wDamage ; damage to eventually inflict, initialise to zero
 	ldi [hl], a
 	ld [hl], a
+	call CheckForPresent
 	call HandleWeatherEffectsOnPlayerTypes
 	ld hl, wPlayerMovePower
 	ld a, [hli]
@@ -4321,6 +4322,7 @@ GetDamageVarsForEnemyAttack:
 	xor a
 	ld [hli], a
 	ld [hl], a
+	call CheckForPresent
 	call HandleWeatherEffectsOnEnemyTypes
 	ld hl, wEnemyMovePower
 	ld a, [hli]

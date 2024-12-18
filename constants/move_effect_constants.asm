@@ -94,4 +94,5 @@
 	const SUN_EFFECT
 	const RAIN_EFFECT
 	const ROLLOUT_EFFECT
+	const PRESENT_EFFECT
 DEF NUM_MOVE_EFFECTS EQU const_value - 1

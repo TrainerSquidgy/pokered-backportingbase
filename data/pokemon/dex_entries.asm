@@ -1259,3 +1259,11 @@ MissingNoDexEntry:
 	db 10 ; 1.0 m
 	dw 100 ; 10.0 kg
 	db "コメント　さくせいちゅう@" ; コメント作成中 (Comment to be written)
+
+
+DelibirdDexEntry:
+	db "DELIVERY@"
+	db 2,11
+	dw 353
+	text_far _DelibirdDexEntry
+	text_end
