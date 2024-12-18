@@ -51,7 +51,20 @@ HealEffect_:
 	ld [wHPBarMaxHP+1], a
 	ld b, a
 	jr z, .gotHPAmountToHeal
-; Recover and Softboiled only heal for half the mon's max HP
+	ld a, [wPlayerMoveNum]
+	cp SYNTHESIS
+	jr nz, .not_synthesis
+	ld a, [wWeatherType]
+	dec a
+	jr z, .not_synthesis
+	dec a
+	jr nz, .not_rain
+	srl b
+	rr c
+.not_rain	
+	srl b
+	rr c
+.not_synthesis
 	srl b
 	rr c
 .gotHPAmountToHeal

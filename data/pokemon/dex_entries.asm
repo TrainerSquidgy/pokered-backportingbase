@@ -1259,3 +1259,17 @@ MissingNoDexEntry:
 	db 10 ; 1.0 m
 	dw 100 ; 10.0 kg
 	db "コメント　さくせいちゅう@" ; コメント作成中 (Comment to be written)
+
+SunkernDexEntry:
+	db "SEED@"
+	db 1,0
+	dw 40
+	text_far _SunkernDexEntry
+	text_end
+
+SunfloraDexEntry:
+	db "SUN@"
+	db 2,7
+	dw 187
+	text_far _SunfloraDexEntry
+	text_end

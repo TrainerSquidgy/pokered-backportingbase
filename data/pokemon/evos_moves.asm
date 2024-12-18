@@ -161,8 +161,8 @@ EvosMovesPointerTable:
 	dw DragoniteEvosMoves
 	dw MewtwoEvosMoves
 	dw MewEvosMoves
-	dw MissingNo1FEvosMoves
-	dw MissingNo20EvosMoves
+	dw SunkernEvosMoves
+	dw SunfloraEvosMoves
 	dw MissingNo32EvosMoves
 	dw MissingNo34EvosMoves
 	dw MissingNo38EvosMoves
@@ -2144,4 +2144,22 @@ VictreebelEvosMoves:
 	db 13, WRAP
 	db 15, POISONPOWDER
 	db 18, SLEEP_POWDER
+	db 0
+
+
+SunkernEvosMoves:
+	db EVOLVE_ITEM, SUN_STONE, 1, SUNFLORA
+	db 0
+	db 10, MEGA_DRAIN
+	db 19, SUNNY_DAY
+	db 31, SYNTHESIS
+	db 46, GIGA_DRAIN
+	db 0
+	
+SunfloraEvosMoves:
+	db 0
+	db 10, RAZOR_LEAF
+	db 19, SUNNY_DAY
+	db 31, PETAL_DANCE
+	db 46, SOLARBEAM
 	db 0
