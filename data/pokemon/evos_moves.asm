@@ -161,8 +161,8 @@ EvosMovesPointerTable:
 	dw DragoniteEvosMoves
 	dw MewtwoEvosMoves
 	dw MewEvosMoves
-	dw MissingNo1FEvosMoves
-	dw MissingNo20EvosMoves
+	dw MarillEvosMoves
+	dw AzumarillEvosMoves
 	dw MissingNo32EvosMoves
 	dw MissingNo34EvosMoves
 	dw MissingNo38EvosMoves
@@ -2144,4 +2144,25 @@ VictreebelEvosMoves:
 	db 13, WRAP
 	db 15, POISONPOWDER
 	db 18, SLEEP_POWDER
+	db 0
+
+MarillEvosMoves:
+	db EVOLVE_LEVEL, 18, AZUMARILL
+	db 0
+	db 6, TAIL_WHIP
+	db 10, WATER_GUN
+	db 15, ROLLOUT
+	db 21, BUBBLEBEAM
+	db 28, DOUBLE_EDGE
+	db 36, RAIN_DANCE
+	db 0
+	
+AzumarillEvosMoves:
+	db 0
+	db 6, TAIL_WHIP
+	db 10, WATER_GUN
+	db 15, ROLLOUT
+	db 25, BUBBLEBEAM
+	db 36, DOUBLE_EDGE
+	db 48, RAIN_DANCE
 	db 0

@@ -151,8 +151,8 @@ PokedexEntryPointers:
 	dw DragoniteDexEntry
 	dw MewtwoDexEntry
 	dw MewDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
+	dw MarillDexEntry
+	dw AzumarillDexEntry
 	dw MissingNoDexEntry
 	dw MissingNoDexEntry
 	dw MissingNoDexEntry
@@ -1259,3 +1259,17 @@ MissingNoDexEntry:
 	db 10 ; 1.0 m
 	dw 100 ; 10.0 kg
 	db "コメント　さくせいちゅう@" ; コメント作成中 (Comment to be written)
+
+MarillDexEntry:
+	db "AQUAMOUSE@"
+	db 1,4
+	dw 187
+	text_far _MarillDexEntry
+	text_end
+	
+AzumarillDexEntry:
+	db "AQUARABBIT@"
+	db 2,7
+	dw 628
+	text_far _AzumarillDexEntry
+	text_end
