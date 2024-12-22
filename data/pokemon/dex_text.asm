@@ -1507,3 +1507,12 @@ _VictreebelDexEntry::
 	next "has ever returned"
 	next "from there"
 	dex
+
+_RayquazaDexEntry::
+	text "It flies in the"
+	next "ozone layer, way"
+	next "up in the sky."
+
+	page "Until recently,"
+	next "nobody had ever"
+	next "seen RAYQUAZA.@"

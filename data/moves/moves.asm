@@ -180,5 +180,13 @@ Moves:
 	move SUNNY_DAY,    SUN_EFFECT,                   0, FIRE,         100,  5
 	move RAIN_DANCE,   RAIN_EFFECT,                  0, WATER,        100,  5
 	move ROLLOUT,	   ROLLOUT_EFFECT,              30, ROCK,          90, 20
+	move TWISTER,      FLINCH_SIDE_EFFECT2,         40, DRAGON,       100, 20
+	move SCARY_FACE,   SPEED_DOWN2_EFFECT,           0, NORMAL,        90, 10
+	move ANCIENTPOWER, ANCIENTPOWER_EFFECT,         60, ROCK,         100,  5
+	move DRAGON_CLAW,  NO_ADDITIONAL_EFFECT,        80, DRAGON,       100, 15
+	move DRAGON_DANCE, DRAGON_DANCE_EFFECT,          0, DRAGON,       100, 20
+	move CRUNCH,       SPECIAL_DOWN_SIDE_EFFECT,    80, DARK,         100, 15
+	move EXTREMESPEED, NO_ADDITIONAL_EFFECT,        80, NORMAL,       100,  5
+	move OUTRAGE,      THRASH_PETAL_DANCE_EFFECT,   90, DRAGON,       100, 15
 	move STRUGGLE,     RECOIL_EFFECT,               50, NORMAL,       100, 10
 	assert_table_length NUM_ATTACKS

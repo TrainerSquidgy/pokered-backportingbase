@@ -169,6 +169,14 @@ AttackAnimationPointers:
 	dw UnusedAnim
 	dw UnusedAnim
 	dw UnusedAnim
+	dw UnusedAnim ; TWISTER
+	dw UnusedAnim ; SCARY_FACE
+	dw UnusedAnim ; ANCIENTPOWER
+	dw UnusedAnim ; DRAGON_CLAW
+	dw UnusedAnim ; DRAGON_DANCE
+	dw UnusedAnim ; CRUNCH
+	dw UnusedAnim ; EXTREMESPEED
+	dw UnusedAnim ; OUTRAGE
 	dw StruggleAnim
 	assert_table_length NUM_ATTACKS
 	dw ShowPicAnim

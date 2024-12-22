@@ -339,6 +339,7 @@ SECTION "Itemfinder 2", ROMX
 
 INCLUDE "engine/menus/league_pc.asm"
 INCLUDE "engine/events/hidden_items.asm"
+INCLUDE "engine/items/tm_prices.asm"
 
 
 SECTION "bank1E", ROMX
@@ -352,4 +353,3 @@ INCLUDE "data/battle_anims/subanimations.asm"
 INCLUDE "data/battle_anims/frame_blocks.asm"
 INCLUDE "engine/movie/evolution.asm"
 INCLUDE "engine/overworld/elevator.asm"
-INCLUDE "engine/items/tm_prices.asm"

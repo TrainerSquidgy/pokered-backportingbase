@@ -90,4 +90,6 @@ MoveEffectPointerTable:
 	dw SunnyDayEffect
 	dw RainDanceEffect
 	dw RolloutEffect
+	dw AncientPowerEffect
+	dw DragonDanceEffect
 	assert_table_length NUM_MOVE_EFFECTS

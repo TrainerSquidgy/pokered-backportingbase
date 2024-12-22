@@ -170,6 +170,14 @@ MoveSoundTable:
 	db SFX_BATTLE_0B,          $00, $80 ; 
 	db SFX_BATTLE_0B,          $00, $80 ; 
 	db SFX_BATTLE_0B,          $00, $80 ; 
+	db SFX_BATTLE_0C,          $f0, $04 ; TWISTER
+	db SFX_BATTLE_0B,          $00, $80 ; SCARY_FACE
+	db SFX_BATTLE_0B,          $00, $80 ; ANCIENTPOWER
+	db SFX_BATTLE_0B,          $00, $80 ; DRAGON_CLAW
+	db SFX_BATTLE_0B,          $00, $80 ; DRAGON_DANCE
+	db SFX_BATTLE_0B,          $00, $80 ; CRUNCH
+	db SFX_BATTLE_0B,          $00, $80 ; EXTREMESPEED
+	db SFX_BATTLE_0B,          $00, $80 ; OUTRAGE
 	db SFX_BATTLE_0B,          $00, $80 ; STRUGGLE
 	assert_table_length NUM_ATTACKS
 	db SFX_BATTLE_0B,          $00, $80

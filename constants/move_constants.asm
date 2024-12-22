@@ -175,6 +175,14 @@
 	const SUNNY_DAY
 	const RAIN_DANCE
 	const ROLLOUT
+	const TWISTER
+	const SCARY_FACE
+	const ANCIENTPOWER
+	const DRAGON_CLAW
+	const DRAGON_DANCE
+	const CRUNCH
+	const EXTREMESPEED
+	const OUTRAGE
 	const STRUGGLE     ; a5
 DEF NUM_ATTACKS EQU const_value - 1
 
