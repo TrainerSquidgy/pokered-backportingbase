@@ -161,7 +161,7 @@ EvosMovesPointerTable:
 	dw DragoniteEvosMoves
 	dw MewtwoEvosMoves
 	dw MewEvosMoves
-	dw MissingNo1FEvosMoves
+	dw GirafarigEvosMoves
 	dw MissingNo20EvosMoves
 	dw MissingNo32EvosMoves
 	dw MissingNo34EvosMoves
@@ -2145,3 +2145,14 @@ VictreebelEvosMoves:
 	db 15, POISONPOWDER
 	db 18, SLEEP_POWDER
 	db 0
+
+GirafarigEvosMoves:
+	db 0
+	db 7, CONFUSION
+	db 13, STOMP
+	db 20, AGILITY
+	db 30, SUBSTITUTE
+	db 41, PSYBEAM
+	db 54, CRUNCH
+	db 0
+

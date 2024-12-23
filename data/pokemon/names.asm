@@ -151,7 +151,7 @@ MonsterNames::
 	db "DRAGONITE@"
 	db "MEWTWO@@@@"
 	db "MEW@@@@@@@"
-	db "MISSINGNO."
+	db "GIRAFARIG@"
 	db "MISSINGNO."
 	db "MISSINGNO."
 	db "MISSINGNO."

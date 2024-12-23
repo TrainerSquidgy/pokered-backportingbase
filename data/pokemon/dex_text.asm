@@ -1507,3 +1507,13 @@ _VictreebelDexEntry::
 	next "has ever returned"
 	next "from there"
 	dex
+
+_GirafarigDexEntry::
+	text "When it is in"
+	next "danger, its tail"
+	next "uses some sort of"
+
+	page "mysterious powers"
+	next "to drive away the"
+	next "enemy.@"
+	dex
