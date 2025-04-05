@@ -151,7 +151,7 @@ PokedexEntryPointers:
 	dw DragoniteDexEntry
 	dw MewtwoDexEntry
 	dw MewDexEntry
-	dw MissingNoDexEntry
+	dw WishiwashiDexEntry
 	dw MissingNoDexEntry
 	dw MissingNoDexEntry
 	dw MissingNoDexEntry
@@ -1252,6 +1252,13 @@ VictreebelDexEntry:
 	db 5,7
 	dw 340
 	text_far _VictreebelDexEntry
+	text_end
+
+WishiwashiDexEntry:
+	db "SMALL FRY@"
+	db 0,8
+	dw 7
+	text_far _WishiwashiDexEntry
 	text_end
 
 MissingNoDexEntry:

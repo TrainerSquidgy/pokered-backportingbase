@@ -1507,3 +1507,14 @@ _VictreebelDexEntry::
 	next "has ever returned"
 	next "from there"
 	dex
+
+_WishiwashiDexEntry::
+	text "When it's in a"
+	next "jam, its eyes"
+	next "attract others"
+
+	page "of its kind. The"
+	next "light is visible"
+	next "25 miles away."
+	dex
+
