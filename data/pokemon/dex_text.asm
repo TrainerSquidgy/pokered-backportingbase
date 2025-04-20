@@ -1507,3 +1507,13 @@ _VictreebelDexEntry::
 	next "has ever returned"
 	next "from there"
 	dex
+
+_ZoroarkDexEntry::
+	text "Stories say that"
+	next "those who tried"
+	next "to catch ZOROARK"
+	
+	page "were trapped in"
+	next "an illusion and"
+	next "punished."
+	dex

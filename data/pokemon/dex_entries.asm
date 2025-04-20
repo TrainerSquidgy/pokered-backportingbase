@@ -151,7 +151,7 @@ PokedexEntryPointers:
 	dw DragoniteDexEntry
 	dw MewtwoDexEntry
 	dw MewDexEntry
-	dw MissingNoDexEntry
+	dw ZoroarkDexEntry
 	dw MissingNoDexEntry
 	dw MissingNoDexEntry
 	dw MissingNoDexEntry
@@ -1259,3 +1259,10 @@ MissingNoDexEntry:
 	db 10 ; 1.0 m
 	dw 100 ; 10.0 kg
 	db "コメント　さくせいちゅう@" ; コメント作成中 (Comment to be written)
+
+ZoroarkDexEntry:
+	db "ILLUSION@"
+	db 5, 3
+	dw 1788
+	text_far _ZoroarkDexEntry
+	text_end

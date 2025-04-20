@@ -161,7 +161,7 @@ EvosMovesPointerTable:
 	dw DragoniteEvosMoves
 	dw MewtwoEvosMoves
 	dw MewEvosMoves
-	dw MissingNo1FEvosMoves
+	dw ZoroarkEvosMoves
 	dw MissingNo20EvosMoves
 	dw MissingNo32EvosMoves
 	dw MissingNo34EvosMoves
@@ -2144,4 +2144,16 @@ VictreebelEvosMoves:
 	db 13, WRAP
 	db 15, POISONPOWDER
 	db 18, SLEEP_POWDER
+	db 0
+
+ZoroarkEvosMoves:
+	db 0
+	db 6, HONE_CLAWS
+	db 11, FAINT_ATTACK
+	db 18, SCARY_FACE
+	db 25, NIGHT_SLASH
+	db 34, FOUL_PLAY
+	db 40, DARK_PULSE
+	db 43, NASTY_PLOT
+	db 52, NIGHT_DAZE
 	db 0
