@@ -1544,3 +1544,46 @@ RolloutEffect:
 	set IN_ROLLOUT, [hl] ; mon is now in "rage" mode
 	ret
 
+HoneClawsEffect:
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .notEnemyTurn
+; Enemy's turn
+	xor a
+	ld [wEnemyMoveNum], a
+	ld a, ATTACK_UP1_EFFECT
+	ld [wEnemyMoveEffect], a
+	call StatModifierUpEffect
+	ld a, ACCURACY_UP1_EFFECT
+	ld [wEnemyMoveEffect], a
+	jp StatModifierUpEffect
+.notEnemyTurn
+	xor a
+	ld [wPlayerMoveNum], a
+	ld a, ATTACK_UP1_EFFECT
+	ld [wPlayerMoveEffect], a
+	call StatModifierUpEffect
+	ld a, ACCURACY_UP1_EFFECT
+	ld [wPlayerMoveEffect], a
+	jp StatModifierUpEffect
+
+NightDazeEffect:
+	call BattleRandom
+	cp 40 percent + 1
+	ret nc
+	
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .notEnemyTurn
+; Enemy's turn
+	xor a
+	ld [wEnemyMoveNum], a
+	ld a, ACCURACY_DOWN1_EFFECT
+	jp StatModifierDownEffect
+.notEnemyTurn
+	xor a
+	ld [wPlayerMoveNum], a
+	ld a, ACCURACY_DOWN1_EFFECT
+	ld [wPlayerMoveEffect], a
+	jp StatModifierDownEffect
+	

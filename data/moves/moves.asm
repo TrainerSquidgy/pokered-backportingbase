@@ -180,5 +180,13 @@ Moves:
 	move SUNNY_DAY,    SUN_EFFECT,                   0, FIRE,         100,  5
 	move RAIN_DANCE,   RAIN_EFFECT,                  0, WATER,        100,  5
 	move ROLLOUT,	   ROLLOUT_EFFECT,              30, ROCK,          90, 20
+	move PURSUIT,      NO_ADDITIONAL_EFFECT,        40, DARK,         100, 20
+	move HONE_CLAWS,   HONE_CLAWS_EFFECT,            0, DARK,         100, 15
+	move SCARY_FACE,   SPEED_DOWN2_EFFECT,           0, NORMAL,       100, 10
+	move NIGHT_SLASH,  NO_ADDITIONAL_EFFECT,        70, DARK,         100, 15
+	move FOUL_PLAY,    NO_ADDITIONAL_EFFECT,        95, DARK,         100, 15
+	move DARK_PULSE,   FLINCH_SIDE_EFFECT1,         80, DARK,         100, 15
+	move NASTY_PLOT,   SPECIAL_UP2_EFFECT,           0, DARK, 		  100, 20
+	move NIGHT_DAZE,   NIGHT_DAZE_EFFECT,           85, DARK, 		   95, 10
 	move STRUGGLE,     RECOIL_EFFECT,               50, NORMAL,       100, 10
 	assert_table_length NUM_ATTACKS

@@ -175,6 +175,14 @@
 	const SUNNY_DAY
 	const RAIN_DANCE
 	const ROLLOUT
+	const PURSUIT
+	const HONE_CLAWS
+	const SCARY_FACE
+	const NIGHT_SLASH
+	const FOUL_PLAY
+	const DARK_PULSE
+	const NASTY_PLOT
+	const NIGHT_DAZE
 	const STRUGGLE     ; a5
 DEF NUM_ATTACKS EQU const_value - 1
 

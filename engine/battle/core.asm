@@ -373,9 +373,14 @@ MainInBattleLoop:
 	callfar SwitchEnemyMon
 .noLinkBattle
 	ld a, [wPlayerSelectedMove]
+	cp PURSUIT
+	jr z, .playerUsedPriority
 	cp QUICK_ATTACK
 	jr nz, .playerDidNotUseQuickAttack
+.playerUsedPriority
 	ld a, [wEnemySelectedMove]
+	cp PURSUIT
+	jr z, .compareSpeed
 	cp QUICK_ATTACK
 	jr z, .compareSpeed  ; if both used Quick Attack
 	jp .playerMovesFirst ; if player used Quick Attack and enemy didn't
@@ -4247,6 +4252,9 @@ GetDamageVarsForPlayerAttack:
 	pop bc
 	jr .scaleStats
 .specialAttack
+	ld a, [wPlayerMoveNum]
+	cp FOUL_PLAY
+	jr z, .physicalAttack
 	ld hl, wEnemyMonSpecial
 	ld a, [hli]
 	ld b, a
@@ -4361,6 +4369,9 @@ GetDamageVarsForEnemyAttack:
 	pop bc
 	jr .scaleStats
 .specialAttack
+	ld a, [wEnemyMoveNum]
+	cp FOUL_PLAY
+	jr z, .physicalAttack
 	ld hl, wBattleMonSpecial
 	ld a, [hli]
 	ld b, a

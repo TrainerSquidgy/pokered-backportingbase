@@ -169,5 +169,13 @@ MoveNames::
 	li "SUNNY DAY"
 	li "RAIN DANCE"
 	li "ROLLOUT"
+	li "PURSUIT"
+	li "HONE CLAWS"
+	li "SCARY FACE"
+	li "NIGHT SLASH"
+	li "FOUL PLAY"
+	li "DARK PULSE"
+	li "NASTY PLOT"
+	li "NIGHT DAZE"
 	li "STRUGGLE"
 	assert_list_length NUM_ATTACKS

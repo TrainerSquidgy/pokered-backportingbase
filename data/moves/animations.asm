@@ -169,6 +169,14 @@ AttackAnimationPointers:
 	dw UnusedAnim
 	dw UnusedAnim
 	dw UnusedAnim
+	dw QuickAttackAnim ; Pursuit
+	dw SharpenAnim ; Hone Claws
+	dw GlareAnim ; Scary Face
+	dw SlashAnim ; Night Slash
+	dw PsyBeamAnim ; Foul Play
+	dw PsywaveAnim ; Dark Pulse
+	dw AmnesiaAnim ; Nasty Plot
+	dw DreamEaterAnim ; Night Daze
 	dw StruggleAnim
 	assert_table_length NUM_ATTACKS
 	dw ShowPicAnim

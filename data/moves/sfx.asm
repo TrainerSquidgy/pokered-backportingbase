@@ -170,6 +170,14 @@ MoveSoundTable:
 	db SFX_BATTLE_0B,          $00, $80 ; 
 	db SFX_BATTLE_0B,          $00, $80 ; 
 	db SFX_BATTLE_0B,          $00, $80 ; 
+	db SFX_NOT_VERY_EFFECTIVE, $01, $ff ; PURSUIT
+	db SFX_BATTLE_31,          $80, $04 ; HONE_CLAWS
+	db SFX_NOT_VERY_EFFECTIVE, $09, $ff ; SCARY_FACE
+	db SFX_NOT_VERY_EFFECTIVE, $01, $ff ; NIGHT_SLASH
+	db SFX_BATTLE_1E,          $12, $ff ; FOUL_PLAY
+	db SFX_BATTLE_0C,          $f0, $f0 ; DARK_PULSE
+	db SFX_BATTLE_09,          $f8, $10 ; NASTY_PLOT
+	db SFX_BATTLE_35,          $42, $01 ; NIGHT_DAZE
 	db SFX_BATTLE_0B,          $00, $80 ; STRUGGLE
 	assert_table_length NUM_ATTACKS
 	db SFX_BATTLE_0B,          $00, $80
