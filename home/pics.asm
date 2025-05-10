@@ -41,6 +41,7 @@ UncompressMonSprite::
 .GotBank
 	jp UncompressSpriteData
 
+
 ; de: destination location
 LoadMonFrontSprite::
 	push de

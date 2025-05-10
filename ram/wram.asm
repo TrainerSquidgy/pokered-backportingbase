@@ -833,6 +833,7 @@ wSwappedMenuItem::
 ; 1 = bite
 ; 2 = no fish on map
 wRodResponse::
+wOptionsCursorLocation::
 	db
 ENDU
 
