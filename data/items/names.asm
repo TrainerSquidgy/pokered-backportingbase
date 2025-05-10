@@ -83,6 +83,7 @@ ItemNames::
 	li "MAX ETHER"
 	li "ELIXER"
 	li "MAX ELIXER"
+	li "LINKING CORD"
 	assert_list_length NUM_ITEMS
 	li "B2F"
 	li "B1F"

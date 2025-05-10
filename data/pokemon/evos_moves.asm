@@ -623,6 +623,7 @@ KadabraEvosMoves:
 ; Evolutions
 	db EVOLVE_LEVEL, 38, ALAKAZAM
 	db EVOLVE_TRADE, 1, ALAKAZAM
+	db EVOLVE_ITEM, LINKING_CORD, 1, ALAKAZAM
 	db 0
 ; Learnset
 	db 16, CONFUSION
@@ -637,6 +638,7 @@ GravelerEvosMoves:
 ; Evolutions
 	db EVOLVE_LEVEL, 38, GOLEM
 	db EVOLVE_TRADE, 1, GOLEM
+	db EVOLVE_ITEM, LINKING_CORD, 1, GOLEM
 	db 0
 ; Learnset
 	db 11, DEFENSE_CURL
@@ -663,6 +665,7 @@ MachokeEvosMoves:
 ; Evolutions
 	db EVOLVE_LEVEL, 40, MACHAMP
 	db EVOLVE_TRADE, 1, MACHAMP
+	db EVOLVE_ITEM, LINKING_CORD, 1, MACHAMP
 	db 0
 ; Learnset
 	db 20, LOW_KICK
@@ -1698,6 +1701,7 @@ HaunterEvosMoves:
 ; Evolutions
 	db EVOLVE_LEVEL, 36, GENGAR
 	db EVOLVE_TRADE, 1, GENGAR
+	db EVOLVE_ITEM, LINKING_CORD, 1, GENGAR
 	db 0
 ; Learnset
 	db 29, HYPNOSIS
