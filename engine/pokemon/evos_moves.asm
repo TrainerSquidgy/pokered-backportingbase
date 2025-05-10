@@ -1,5 +1,7 @@
 ; try to evolve the mon in [wWhichPokemon]
 TryEvolvingMon:
+	ld a, [wEvolutionsDisabled]
+	ret nz
 	ld hl, wCanEvolveFlags
 	xor a
 	ld [hl], a

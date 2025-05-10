@@ -73,7 +73,20 @@ wAudioSavedROMBank:: db
 wFrequencyModifier:: db
 wTempoModifier:: db
 
-	ds 13
+wStarterPokemon1:: db
+wStarterPokemon2:: db
+wStarterPokemon3:: db
+
+wSpearowEncounters:: db
+wAbraEncounters:: db
+wParasEncounters:: db
+wHMFriendHelp:: db
+wStarterPerfectDVs:: db
+wEvolutionsDisabled:: db
+wDexCatchingHelp:: db
+wVermilionGymHelp:: db
+
+	ds 2
 
 
 SECTION "Sprite State Data", WRAM0
@@ -2080,9 +2093,7 @@ wWhichDungeonWarp:: db
 
 wUnusedCardKeyGateID:: db
 wIsAStarter:: db
-wStarterPokemon1:: db
-wStarterPokemon2:: db
-wStarterPokemon3:: db
+ds 3
 wStarterAtkDef:: db
 wStarterSpdSpc:: db
 wWeatherType:: db
